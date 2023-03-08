@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { BaseHTMLAttributes, FC } from 'react';
 
 import svg_constructor from '../../../shared/assets/place.svg';
 
-export const Constructor: FC = () => {
+export const Constructor: FC<BaseHTMLAttributes<HTMLDivElement>> = (
+  props: BaseHTMLAttributes<HTMLDivElement>
+) => {
   return (
     <div className="flex flex-col gap-3 w-[243px] h-[448px] border-2 border-dashed rounded justify-center items-center">
       <img src={svg_constructor} alt="Place there" />
