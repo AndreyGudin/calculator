@@ -20,6 +20,9 @@ export const PanelWithElements: FC = () => {
         condition={true}
         element="0"
       />
+      <Container>
+        <Button theme={ThemeButton.BIG}>=</Button>
+      </Container>
     </div>
   );
 };

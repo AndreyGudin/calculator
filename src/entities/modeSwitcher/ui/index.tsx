@@ -5,7 +5,7 @@ import svg_selector from '../../../shared/assets/selector.svg';
 
 export const ModeSwitcher: FC = () => {
   return (
-    <div className="w-[243px] h-[38px] flex gap-1 bg-[#F3F4F6] rounded">
+    <div className="w-[243px] h-[38px] flex gap-1 bg-[#F3F4F6] rounded p-[1px]">
       <input
         type="radio"
         name="mode"

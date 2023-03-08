@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import { PanelWithElements } from '../feature/panelWithElements/ui';
+import { PanelWithActions } from '../feature/panelWithActions/ui';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
+    <div className="App flex gap-[56px] items-end">
       <PanelWithElements />
+      <PanelWithActions />
     </div>
   );
 }
