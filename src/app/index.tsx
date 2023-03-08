@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Display } from '../entities/display/ui';
 import { ModeSwitcher } from '../entities/modeSwitcher/ui';
 import { Button, ThemeButton } from '../shared/ui/Button/Button';
 import { Container } from '../shared/ui/Container/Container';
@@ -8,12 +9,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello World!</h1>
       <Container>
-        <Button theme={ThemeButton.BIG}>1</Button>
-        <Button theme={ThemeButton.BIG}>1</Button>
-        <Button theme={ThemeButton.BIG}>1</Button>
-        <Button theme={ThemeButton.BIG}>1</Button>
+        <Display text="0" />
       </Container>
     </div>
   );

@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export const Container: FC<ContainerProps> = ({ children }: ContainerProps) => {
   return (
-    <div className="flex flex-wrap gap-2 max-w-[240px] bg-white p-1 shadow-md shadow-slate-400">
+    <div className="flex flex-wrap gap-2 max-w-[240px] h-[60px] bg-white p-1 shadow-md shadow-slate-400">
       {children}
     </div>
   );
