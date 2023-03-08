@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import svg_runtime from '../../../../shared/assets/eye.svg';
-import svg_selector from '../../../../shared/assets/selector.svg';
+import svg_runtime from '../../../shared/assets/eye.svg';
+import svg_selector from '../../../shared/assets/selector.svg';
 
 export const ModeSwitcher: FC = () => {
   return (
