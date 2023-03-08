@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Constructor } from '../entities/constructor/ui';
 import { Display } from '../entities/display/ui';
 import { ModeSwitcher } from '../entities/modeSwitcher/ui';
 import { Button, ThemeButton } from '../shared/ui/Button/Button';
@@ -12,6 +13,7 @@ function App() {
       <Container>
         <Display text="0" />
       </Container>
+      <Constructor />
     </div>
   );
 }
