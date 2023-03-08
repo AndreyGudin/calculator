@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switcher } from '../entities/modeSwitcher/ui';
+import { ModeSwitcher } from '../entities/modeSwitcher/ui';
 import { Button, ThemeButton } from '../shared/ui/Button/Button';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <h1 className="text-3xl font-bold underline">Hello World!</h1>
       <Button theme={ThemeButton.OPERATION}>1</Button>
-      <Switcher />
+      <ModeSwitcher />
     </div>
   );
 }
