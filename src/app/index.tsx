@@ -1,5 +1,5 @@
 import { PanelWithElements } from '../features/panelWithElements';
-import { PanelWithActions } from '../features/panelWithActions/ui';
+import { PanelWithActions } from '../features/panelWithActions';
 import { StoreProvider } from './providers/StoreProvider';
 
 function App() {

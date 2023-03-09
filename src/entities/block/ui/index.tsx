@@ -10,6 +10,7 @@ interface BlockProps {
   condition?: boolean;
   element?: string;
   dragStartHandler?: (e: DragEvent<HTMLDivElement>) => void;
+  dropHandler: (e: DragEvent<HTMLDivElement>) => void;
 }
 
 export const Block: FC<BlockProps> = ({
@@ -18,10 +19,11 @@ export const Block: FC<BlockProps> = ({
   secondaryTheme,
   element,
   condition,
-  dragStartHandler
+  dragStartHandler,
+  dropHandler
 }: BlockProps) => {
   return (
-    <Container dragStartHandler={dragStartHandler!}>
+    <Container dragStartHandler={dragStartHandler!} dropHandler={dropHandler}>
       {array.map((elem, i) => {
         return (
           <Button

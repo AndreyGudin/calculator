@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ElementsSchema } from '../types/elementsSchema';
 
 const initialState: ElementsSchema = {
-  value: []
+  value: ''
 };
 
 export const elementsSlice = createSlice({
@@ -11,7 +11,7 @@ export const elementsSlice = createSlice({
   reducers: {
     save: (state, payload) => {
       console.log('first');
-      state.value = [...state.value, payload.payload];
+      state.value = payload.payload;
     }
   }
 });

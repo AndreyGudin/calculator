@@ -1,5 +1,3 @@
-import { PanelWithElements } from './ui';
-import { elementsSlice } from './model/slice/elementsSlice';
-import type { ElementsSchema } from './model/types/elementsSchema';
-
-export { PanelWithElements, elementsSlice, ElementsSchema };
+export { PanelWithElements } from './ui';
+export { elementsSlice } from './model/slice/elementsSlice';
+export type { ElementsSchema } from './model/types/elementsSchema';

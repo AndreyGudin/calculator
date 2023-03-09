@@ -1,3 +1,3 @@
 export interface ElementsSchema {
-  value: string[];
+  value: string;
 }

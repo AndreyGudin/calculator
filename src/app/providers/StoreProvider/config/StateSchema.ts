@@ -1,5 +1,7 @@
+import { ConstructorSchema } from '../../../../features/panelWithActions';
 import { ElementsSchema } from '../../../../features/panelWithElements';
 
 export interface StateSchema {
-  elements: ElementsSchema;
+  currentElement: ElementsSchema;
+  elements: ConstructorSchema;
 }
