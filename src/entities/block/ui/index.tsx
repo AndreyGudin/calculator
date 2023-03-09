@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, DragEvent } from 'react';
 import { Button, ThemeButton } from '../../../shared/ui/Button/Button';
 
 import { Container } from '../../../shared/ui/Container/Container';
@@ -9,6 +9,7 @@ interface BlockProps {
   secondaryTheme?: ThemeButton;
   condition?: boolean;
   element?: string;
+  dragStartHandler?: (e: DragEvent<HTMLDivElement>) => void;
 }
 
 export const Block: FC<BlockProps> = ({
@@ -16,10 +17,11 @@ export const Block: FC<BlockProps> = ({
   mainTheme,
   secondaryTheme,
   element,
-  condition
+  condition,
+  dragStartHandler
 }: BlockProps) => {
   return (
-    <Container>
+    <Container dragStartHandler={dragStartHandler!}>
       {array.map((elem, i) => {
         return (
           <Button
