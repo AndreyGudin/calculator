@@ -1,15 +1,20 @@
 import { FC, DragEvent } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Block } from '../../../entities/block/ui';
 import { Display } from '../../../entities/display/ui';
 import { Button, ThemeButton } from '../../../shared/ui/Button/Button';
 import { Container } from '../../../shared/ui/Container/Container';
+import { elementsActions } from '../model/slice/elementsSlice';
 
 export const PanelWithElements: FC = () => {
+  const dispatch = useDispatch();
   const operations = ['/', 'X', '-', '+'];
   const numbers = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', ','];
 
   const dragStartHandler = (e: DragEvent<HTMLDivElement>) => {
-    console.log('e', e.target);
+    console.log('e', (e.target as HTMLDivElement).innerHTML);
+    dispatch(elementsActions.save((e.target as HTMLDivElement).innerHTML));
   };
 
   return (

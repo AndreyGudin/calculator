@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ElementsSchema } from '../../types/elementsSchema';
+import { ElementsSchema } from '../types/elementsSchema';
 
 const initialState: ElementsSchema = {
-  value: null
+  value: []
 };
 
 export const elementsSlice = createSlice({
-  name: 'elements',
+  name: 'currentElement',
   initialState,
   reducers: {
     save: (state, payload) => {
-      state.value = payload.payload;
+      console.log('first');
+      state.value = [...state.value, payload.payload];
     }
   }
 });
