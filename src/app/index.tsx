@@ -1,14 +1,15 @@
-import { useState } from 'react';
-
-import { PanelWithElements } from '../features/panelWithElements/ui';
+import { PanelWithElements } from '../features/panelWithElements';
 import { PanelWithActions } from '../features/panelWithActions/ui';
+import { StoreProvider } from './providers/StoreProvider';
 
 function App() {
   return (
-    <div className="App flex gap-[56px] items-end">
-      <PanelWithElements />
-      <PanelWithActions />
-    </div>
+    <StoreProvider>
+      <div className="App flex gap-[56px] items-end">
+        <PanelWithElements />
+        <PanelWithActions />
+      </div>
+    </StoreProvider>
   );
 }
 
