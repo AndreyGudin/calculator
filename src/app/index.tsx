@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { PanelWithElements } from '../feature/panelWithElements/ui';
-import { PanelWithActions } from '../feature/panelWithActions/ui';
+import { PanelWithElements } from '../features/panelWithElements/ui';
+import { PanelWithActions } from '../features/panelWithActions/ui';
 
 function App() {
   return (
