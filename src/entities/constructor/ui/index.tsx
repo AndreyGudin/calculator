@@ -5,33 +5,14 @@ import { StateSchema } from '../../../app/providers/StoreProvider';
 import svg_constructor from '../../../shared/assets/place.svg';
 
 interface ConstructorProps {
-  dragOverHandler: (e: DragEvent<HTMLDivElement>) => void;
-  // dragLeaveHandler?: (e: DragEvent<HTMLDivElement>) => void;
-  dragEnterHandler: (e: DragEvent<HTMLDivElement>) => void;
-  dragEndHandler: (e: DragEvent<HTMLDivElement>) => void;
-  dropHandler: (e: DragEvent<HTMLDivElement>) => void;
   children: React.ReactNode;
 }
 
 export const Constructor: FC<ConstructorProps> = (props: ConstructorProps) => {
   const isDropped = useSelector((state: StateSchema) => state.elements.dropped);
-  const {
-    dragOverHandler,
-    // dragLeaveHandler,
-    dragEnterHandler,
-    dragEndHandler,
-    dropHandler,
-    children
-  } = props;
+  const { children } = props;
   return (
-    <div
-      className="flex flex-col gap-3 w-[243px] h-[448px] border-2 border-dashed rounded justify-center items-center"
-      onDragOver={(e) => dragOverHandler!(e)}
-      // onDragLeave={(e) => dragLeaveHandler!(e)}
-      onDragEnd={(e) => dragEndHandler(e)}
-      onDrop={(e) => dropHandler(e)}
-      onDragEnter={dragEnterHandler}
-    >
+    <div className="flex flex-col gap-3 w-[243px] h-[448px] border-2 border-dashed rounded justify-center items-center">
       {isDropped ? null : (
         <>
           <img src={svg_constructor} alt="Place there" />

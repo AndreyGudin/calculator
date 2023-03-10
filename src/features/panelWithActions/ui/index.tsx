@@ -11,36 +11,11 @@ export const PanelWithActions: FC = () => {
   const current = useSelector(
     (state: StateSchema) => state.currentElement.value
   );
-  const dropHandler = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    dispatch(constructorActions.update(current));
-    dispatch(constructorActions.switch(true));
-    console.log('drop');
-  };
-
-  const dragEndHandler = (e: DragEvent<HTMLDivElement>) => {
-    console.log('drag end');
-  };
-
-  const dragOverHandler = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    console.log('drag over');
-  };
-
-  const dragEnterHandler = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    console.log('drag enter');
-  };
 
   return (
     <div className="flex flex-col gap-[30px]">
       <ModeSwitcher />
-      <Constructor
-        dropHandler={dropHandler}
-        dragEndHandler={dragEndHandler}
-        dragOverHandler={dragOverHandler}
-        dragEnterHandler={dragEnterHandler}
-      >
+      <Constructor>
         {elements.map((elem: string) => {
           return (
             <div

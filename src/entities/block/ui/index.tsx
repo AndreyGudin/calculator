@@ -9,8 +9,6 @@ interface BlockProps {
   secondaryTheme?: ThemeButton;
   condition?: boolean;
   element?: string;
-  dragStartHandler?: (e: DragEvent<HTMLDivElement>) => void;
-  dropHandler: (e: DragEvent<HTMLDivElement>) => void;
 }
 
 export const Block: FC<BlockProps> = ({
@@ -18,12 +16,10 @@ export const Block: FC<BlockProps> = ({
   mainTheme,
   secondaryTheme,
   element,
-  condition,
-  dragStartHandler,
-  dropHandler
+  condition
 }: BlockProps) => {
   return (
-    <Container dragStartHandler={dragStartHandler!} dropHandler={dropHandler}>
+    <Container>
       {array.map((elem, i) => {
         return (
           <Button
