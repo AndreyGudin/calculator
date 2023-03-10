@@ -9,6 +9,7 @@ interface BlockProps {
   secondaryTheme?: ThemeButton;
   condition?: boolean;
   element?: string;
+  id: string;
 }
 
 export const Block: FC<BlockProps> = ({
@@ -16,10 +17,11 @@ export const Block: FC<BlockProps> = ({
   mainTheme,
   secondaryTheme,
   element,
-  condition
+  condition,
+  id
 }: BlockProps) => {
   return (
-    <Container>
+    <Container id={id}>
       {array.map((elem, i) => {
         return (
           <Button

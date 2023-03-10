@@ -1,3 +1,4 @@
+import { useDraggable } from '@dnd-kit/core';
 import { FC, DragEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from '../../../app/providers/StoreProvider';
@@ -17,18 +18,19 @@ export const PanelWithElements: FC = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <Container>
+      <Container id="1">
         <Display text="0" />
       </Container>
-      <Block array={operations} mainTheme={ThemeButton.OPERATION} />
+      <Block array={operations} mainTheme={ThemeButton.OPERATION} id="2" />
       <Block
+        id="3"
         array={numbers}
         mainTheme={ThemeButton.NUMBER}
         secondaryTheme={ThemeButton.NUMBERx2}
         condition={true}
         element="0"
       />
-      <Container>
+      <Container id="4">
         <Button theme={ThemeButton.BIG} onClick={() => console.log('click')}>
           =
         </Button>
