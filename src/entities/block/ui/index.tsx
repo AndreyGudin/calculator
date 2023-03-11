@@ -20,8 +20,18 @@ export const Block: FC<BlockProps> = ({
   condition,
   id
 }: BlockProps) => {
+  const elements = array.map((elem) => {
+    const conditionTheme = !condition
+      ? mainTheme
+      : elem === element
+      ? secondaryTheme!
+      : mainTheme;
+    return { type: 'button', theme: conditionTheme, text: elem };
+  });
+  const data = { elem: elements };
+  console.log('data', data);
   return (
-    <Container id={id}>
+    <Container id={id} data={data}>
       {array.map((elem, i) => {
         return (
           <Button

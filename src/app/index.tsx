@@ -3,19 +3,17 @@ import { PanelWithActions } from '../features/panelWithActions';
 import { StoreProvider } from './providers/StoreProvider';
 import { DndContext } from '@dnd-kit/core';
 import { closestCenter } from '@dnd-kit/core';
+import { DndProvider } from './providers/DndProvider/ui';
 
 function App() {
   return (
     <StoreProvider>
-      <DndContext
-        collisionDetection={closestCenter}
-        onDragEnd={(e) => console.log('data', e.active?.data.current)}
-      >
+      <DndProvider>
         <div className="App flex gap-[56px] items-end">
           <PanelWithElements />
           <PanelWithActions />
         </div>
-      </DndContext>
+      </DndProvider>
     </StoreProvider>
   );
 }

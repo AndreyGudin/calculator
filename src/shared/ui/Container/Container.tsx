@@ -3,16 +3,15 @@ import { FC } from 'react';
 
 interface ContainerProps {
   children: React.ReactNode;
+  data?: Record<string, Record<string, string>[]>;
   id: string;
 }
 
 export const Container: FC<ContainerProps> = (props: ContainerProps) => {
-  const { children, id } = props;
+  const { children, id, data } = props;
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: `draggable${id}`,
-    data: {
-      value: 'data'
-    }
+    data
   });
 
   const style = transform
