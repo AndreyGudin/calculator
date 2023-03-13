@@ -1,14 +1,7 @@
-interface ElementsData {
-  type: string;
-  theme: string;
-  text: string;
-}
-
-interface ElementStructure {
-  elem: ElementsData[];
-}
+import { ElementStructure } from '../../../../../shared/ui/Container/types';
 
 export interface ConstructorSchema {
   value: ElementStructure[];
+  sortableItems: string[];
   dropped: boolean;
 }

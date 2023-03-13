@@ -25,6 +25,7 @@ export const ModeSwitcher: FC = () => {
         name="mode"
         id="constructor"
         checked
+        readOnly
         className="peer/constr hidden"
       />
       <label

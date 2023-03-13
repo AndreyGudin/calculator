@@ -1,7 +1,7 @@
 import { FC, DragEvent } from 'react';
 import { Button, ThemeButton } from '../../../shared/ui/Button/Button';
 
-import { Container } from '../../../shared/ui/Container/Container';
+import { Container } from '../../../shared/ui/Container/ui/Container';
 
 interface BlockProps {
   array: string[];
@@ -28,7 +28,7 @@ export const Block: FC<BlockProps> = ({
       : mainTheme;
     return { type: 'button', theme: conditionTheme, text: elem };
   });
-  const data = { elem: elements };
+  const data = { elem: elements, id };
   console.log('data', data);
   return (
     <Container id={id} data={data}>
