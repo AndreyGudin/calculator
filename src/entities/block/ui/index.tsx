@@ -1,4 +1,6 @@
 import { FC, DragEvent } from 'react';
+import { useSelector } from 'react-redux';
+import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
 import { Button, ThemeButton } from '../../../shared/ui/Button/Button';
 
 import { Container } from '../../../shared/ui/Container/ui/Container';
@@ -29,9 +31,10 @@ export const Block: FC<BlockProps> = ({
     return { type: 'button', theme: conditionTheme, text: elem };
   });
   const data = { elem: elements, id };
+  const droppedIds = useSelector(getDroppedIds);
   console.log('data', data);
   return (
-    <Container id={id} data={data}>
+    <Container id={id} data={data} disabled={droppedIds[id]}>
       {array.map((elem, i) => {
         return (
           <Button

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
 import { StateSchema } from '../../../app/providers/StoreProvider';
 
 import { Block } from '../../../entities/block/ui';
@@ -10,11 +11,12 @@ import { Container } from '../../../shared/ui/Container/ui/Container';
 export const PanelWithElements: FC = () => {
   const operations = ['/', 'X', '-', '+'];
   const numbers = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', ','];
-
+  const droppedIds = useSelector(getDroppedIds);
   return (
     <div className="flex flex-col gap-3">
       <Container
         id="draggable1"
+        disabled={droppedIds['draggable1']}
         data={{
           elem: [{ type: 'display', theme: '', text: '0' }],
           id: 'draggable1'
@@ -40,6 +42,7 @@ export const PanelWithElements: FC = () => {
           elem: [{ type: 'button', theme: ThemeButton.BIG, text: '=' }],
           id: 'draggable4'
         }}
+        disabled={droppedIds['draggable4']}
         id="draggable4"
       >
         <Button theme={ThemeButton.BIG} onClick={() => console.log('click')}>

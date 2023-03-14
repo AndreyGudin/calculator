@@ -1,5 +1,5 @@
-import { useDroppable } from '@dnd-kit/core';
-import { DragEvent, FC, useEffect, useState } from 'react';
+import { DragEndEvent, useDroppable } from '@dnd-kit/core';
+import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from '../../../app/providers/StoreProvider';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,11 +16,11 @@ import { Button } from '../../../shared/ui/Button/Button';
 import { Display } from '../../display/ui';
 import { getElementsIds } from '../../../app/providers/DndProvider/model/selectors/getElementsIds/getElementsIds';
 import { constructorActions } from '../../../app/providers/DndProvider/model/slice/constructorSlice';
+import { getElements } from '../../../app/providers/DndProvider/model/selectors/getElements/getElements';
+import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
 
 export const Constructor: FC = () => {
-  const droppedElements = useSelector(
-    (state: StateSchema) => state.elements.value
-  );
+  const droppedElements = useSelector(getElements);
   const dispatch = useDispatch();
   const items = useSelector(getElementsIds);
   const isDropped = useSelector((state: StateSchema) => state.elements.dropped);
@@ -31,20 +31,19 @@ export const Constructor: FC = () => {
     backgroundColor: isOver ? 'green' : undefined
   };
 
+  const dragEndHandler = (e: DragEndEvent) => {
+    if (e.active.id !== e.over?.id) {
+      const oldIndex = items.indexOf(e.over?.id as string);
+      const newIndex = items.indexOf(e.active.id as string);
+      dispatch(
+        constructorActions.update(
+          arrayMove(droppedElements, oldIndex, newIndex)
+        )
+      );
+    }
+  };
   return (
-    <DndContext
-      onDragEnd={(e) => {
-        if (e.active.id !== e.over?.id) {
-          const oldIndex = items.indexOf(e.over?.id as string);
-          const newIndex = items.indexOf(e.active.id as string);
-          dispatch(
-            constructorActions.update(
-              arrayMove(droppedElements, oldIndex, newIndex)
-            )
-          );
-        }
-      }}
-    >
+    <DndContext onDragEnd={dragEndHandler}>
       <SortableContext strategy={verticalListSortingStrategy} items={items}>
         <div
           ref={setNodeRef}
@@ -68,7 +67,7 @@ export const Constructor: FC = () => {
           )}
           {droppedElements.map((element) => {
             return (
-              <Container id={element.id} key={element.id}>
+              <Container id={element.id} key={element.id} disabled={false}>
                 {element.elem.map((e) => {
                   let component = null;
                   if (e.type === 'button')

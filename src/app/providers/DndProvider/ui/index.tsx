@@ -1,4 +1,9 @@
-import { closestCenter, DndContext } from '@dnd-kit/core';
+import {
+  closestCenter,
+  DndContext,
+  DragOverEvent,
+  DragStartEvent
+} from '@dnd-kit/core';
 import { ReactNode } from 'react';
 import { DragEndEvent } from '@dnd-kit/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,12 +19,21 @@ export const DndProvider = (props: DndProviderProps) => {
   const dispatch = useDispatch();
 
   const dragEndHandler = (e: DragEndEvent) => {
-    console.log('e', e.over);
-    console.log('a', e.active);
+    console.log('e.active?.data.current', e.active?.data.current);
     if (e.active.id !== e.over?.id) {
       dispatch(constructorActions.switch(true));
       dispatch(constructorActions.add(e.active?.data.current));
     }
   };
-  return <DndContext onDragEnd={dragEndHandler}>{children}</DndContext>;
+
+  const dragStartHandler = (e: DragStartEvent) => {
+    dispatch(
+      constructorActions.dropped({ id: e.active.id as string, dropped: true })
+    );
+  };
+  return (
+    <DndContext onDragStart={dragStartHandler} onDragEnd={dragEndHandler}>
+      {children}
+    </DndContext>
+  );
 };

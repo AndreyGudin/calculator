@@ -1,9 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ConstructorSchema } from '../types/constructorSchema';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  ConstructorSchema,
+  DroppedIdsPayload
+} from '../types/constructorSchema';
 
 const initialState: ConstructorSchema = {
   value: [],
-  sortableItems: [],
+  droppedIds: {},
   dropped: false
 };
 
@@ -20,8 +23,8 @@ export const constructorSlice = createSlice({
     switch: (state, payload) => {
       state.dropped = payload.payload;
     },
-    change: (state, payload) => {
-      state.sortableItems = payload.payload;
+    dropped: (state, payload: PayloadAction<DroppedIdsPayload>) => {
+      state.droppedIds[payload.payload.id] = payload.payload.dropped;
     }
   }
 });

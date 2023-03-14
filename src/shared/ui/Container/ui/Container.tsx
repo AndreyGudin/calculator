@@ -1,4 +1,4 @@
-import { DragOverlay, useDraggable } from '@dnd-kit/core';
+import { DragOverlay } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { FC } from 'react';
 import { CSS } from '@dnd-kit/utilities';
@@ -8,14 +8,12 @@ interface ContainerProps {
   children: React.ReactNode;
   data?: ElementStructure;
   id: string;
+  customStyle?: React.CSSProperties | undefined;
+  disabled: boolean;
 }
 
 export const Container: FC<ContainerProps> = (props: ContainerProps) => {
-  const { children, id, data } = props;
-  // const { attributes, listeners, setNodeRef, transform } = useDraggable({
-  //   id: data?.id ? data?.id : id,
-  //   data
-  // });
+  const { children, id, data, customStyle, disabled } = props;
   const {
     attributes,
     listeners,
@@ -23,11 +21,20 @@ export const Container: FC<ContainerProps> = (props: ContainerProps) => {
     transform,
     transition,
     isDragging
-  } = useSortable({ id: data?.id ? data?.id : id, data });
+  } = useSortable({
+    id: data?.id ? data?.id : id,
+    data,
+    disabled: typeof disabled === 'boolean' ? disabled : false
+  });
 
-  const style = {
+  const additionalStyle = customStyle ? { ...customStyle } : '';
+  // const positionToPlace =
+  //   "w-[240px] h-0.5 relative border-t-2 border-t-[blue] border-solid after:content-[''] after:bg-[blue] after:absolute after:block after:w-2 after:h-2 after:rotate-45 after:-bottom-px before:content-[''] before:bg-[blue] before:absolute before:block before:w-2 before:h-2 before:rotate-45 before:left-full before:-bottom-px";
+  const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
-    transition
+    transition,
+    opacity: disabled ? 0.5 : 1,
+    ...additionalStyle
   };
   const divStyle =
     'flex flex-wrap items-center gap-2 box-border max-w-[240px] bg-white p-1 shadow-md shadow-slate-400 rounded';
@@ -35,7 +42,7 @@ export const Container: FC<ContainerProps> = (props: ContainerProps) => {
     <div
       className={divStyle}
       style={{
-        opacity: isDragging ? '0.5' : '',
+        opacity: isDragging ? '1' : '',
         boxShadow: isDragging
           ? '0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1)'
           : ''

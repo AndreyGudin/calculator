@@ -2,6 +2,11 @@ import { ElementStructure } from '../../../../../shared/ui/Container/types';
 
 export interface ConstructorSchema {
   value: ElementStructure[];
-  sortableItems: string[];
+  droppedIds: Record<string, boolean>;
+  dropped: boolean;
+}
+
+export interface DroppedIdsPayload {
+  id: string;
   dropped: boolean;
 }
