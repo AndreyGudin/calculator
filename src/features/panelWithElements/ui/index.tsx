@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
-import { StateSchema } from '../../../app/providers/StoreProvider';
 
 import { Block } from '../../../entities/block/ui';
 import { Display } from '../../../entities/display/ui';

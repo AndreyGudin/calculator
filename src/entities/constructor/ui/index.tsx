@@ -1,4 +1,10 @@
-import { DragEndEvent, useDroppable } from '@dnd-kit/core';
+import {
+  DragEndEvent,
+  MouseSensor,
+  useDroppable,
+  useSensor,
+  useSensors
+} from '@dnd-kit/core';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from '../../../app/providers/StoreProvider';
@@ -20,6 +26,12 @@ export const Constructor: FC = () => {
   const dispatch = useDispatch();
   const items = useSelector(getElementsIds);
   const isDropped = useSelector((state: StateSchema) => state.elements.dropped);
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 10
+    }
+  });
+  const sensors = useSensors(mouseSensor);
   const { isOver, setNodeRef } = useDroppable({
     id: 'droppable1'
   });
@@ -39,7 +51,7 @@ export const Constructor: FC = () => {
     }
   };
   return (
-    <DndContext onDragEnd={dragEndHandler}>
+    <DndContext sensors={sensors} onDragEnd={dragEndHandler}>
       <SortableContext strategy={verticalListSortingStrategy} items={items}>
         <div
           ref={setNodeRef}

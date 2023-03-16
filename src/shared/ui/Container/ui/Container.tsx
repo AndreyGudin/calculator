@@ -10,10 +10,20 @@ interface ContainerProps {
   id: string;
   customStyle?: React.CSSProperties | undefined;
   disabled: boolean;
+  onDoubleClickHandler?: (id: string) => void;
 }
 
 export const Container: FC<ContainerProps> = (props: ContainerProps) => {
-  const { children, id, data, customStyle, disabled } = props;
+  const {
+    children,
+    id,
+    data,
+    customStyle,
+    disabled,
+    onDoubleClickHandler = () => {
+      console.log('default');
+    }
+  } = props;
   const {
     attributes,
     listeners,
@@ -49,12 +59,17 @@ export const Container: FC<ContainerProps> = (props: ContainerProps) => {
       {children}
     </div>
   ) : null;
+
   return (
     <>
       <div
         className={divStyle}
         ref={setNodeRef}
         style={style}
+        onDoubleClick={() => {
+          onDoubleClickHandler!(id);
+        }}
+        onClick={() => console.log('click')}
         {...listeners}
         {...attributes}
       >

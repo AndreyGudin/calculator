@@ -23,17 +23,11 @@ export const DndProvider = (props: DndProviderProps) => {
     if (e.active.id !== e.over?.id) {
       dispatch(constructorActions.switch(true));
       dispatch(constructorActions.add(e.active?.data.current));
+      dispatch(
+        constructorActions.dropped({ id: e.active.id as string, dropped: true })
+      );
     }
   };
 
-  const dragStartHandler = (e: DragStartEvent) => {
-    dispatch(
-      constructorActions.dropped({ id: e.active.id as string, dropped: true })
-    );
-  };
-  return (
-    <DndContext onDragStart={dragStartHandler} onDragEnd={dragEndHandler}>
-      {children}
-    </DndContext>
-  );
+  return <DndContext onDragEnd={dragEndHandler}>{children}</DndContext>;
 };
