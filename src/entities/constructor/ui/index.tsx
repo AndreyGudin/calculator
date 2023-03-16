@@ -2,7 +2,6 @@ import { DragEndEvent, useDroppable } from '@dnd-kit/core';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from '../../../app/providers/StoreProvider';
-import { v4 as uuidv4 } from 'uuid';
 import { DndContext } from '@dnd-kit/core';
 import {
   SortableContext,
@@ -11,13 +10,10 @@ import {
 } from '@dnd-kit/sortable';
 
 import svg_constructor from '../../../shared/assets/place.svg';
-import { Container } from '../../../shared/ui/Container/ui/Container';
-import { Button } from '../../../shared/ui/Button/Button';
-import { Display } from '../../display/ui';
 import { getElementsIds } from '../../../app/providers/DndProvider/model/selectors/getElementsIds/getElementsIds';
 import { constructorActions } from '../../../app/providers/DndProvider/model/slice/constructorSlice';
 import { getElements } from '../../../app/providers/DndProvider/model/selectors/getElements/getElements';
-import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
+import { DroppedItems } from '../../droppedItems/ui/droppedItems';
 
 export const Constructor: FC = () => {
   const droppedElements = useSelector(getElements);
@@ -65,24 +61,7 @@ export const Constructor: FC = () => {
               </div>
             </>
           )}
-          {droppedElements.map((element) => {
-            return (
-              <Container id={element.id} key={element.id} disabled={false}>
-                {element.elem.map((e) => {
-                  let component = null;
-                  if (e.type === 'button')
-                    component = (
-                      <Button className={e.theme} key={uuidv4()}>
-                        {e.text}
-                      </Button>
-                    );
-                  if (e.type === 'display')
-                    component = <Display text={e.text} key={uuidv4()} />;
-                  return component;
-                })}
-              </Container>
-            );
-          })}
+          <DroppedItems items={droppedElements} />
         </div>
       </SortableContext>
     </DndContext>

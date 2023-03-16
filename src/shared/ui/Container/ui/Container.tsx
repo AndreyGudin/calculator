@@ -28,12 +28,10 @@ export const Container: FC<ContainerProps> = (props: ContainerProps) => {
   });
 
   const additionalStyle = customStyle ? { ...customStyle } : '';
-  // const positionToPlace =
-  //   "w-[240px] h-0.5 relative border-t-2 border-t-[blue] border-solid after:content-[''] after:bg-[blue] after:absolute after:block after:w-2 after:h-2 after:rotate-45 after:-bottom-px before:content-[''] before:bg-[blue] before:absolute before:block before:w-2 before:h-2 before:rotate-45 before:left-full before:-bottom-px";
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: disabled ? 0.5 : 1,
+    opacity: disabled || isDragging ? 0.5 : 1,
     ...additionalStyle
   };
   const divStyle =
