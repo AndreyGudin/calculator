@@ -7,6 +7,7 @@ import { constructorActions } from '../../../app/providers/DndProvider/model/sli
 import { ElementStructure } from '../../../shared/ui/Container/types';
 import { Container } from '../../../shared/ui/Container/ui/Container';
 import { DroppedItem } from '../../../shared/ui/DroppedItem/droppedItem';
+import { getCurrentMode } from '../../modeSwitcher';
 
 interface DroppedItemsProps {
   items: ElementStructure[];
@@ -16,6 +17,7 @@ export const DroppedItems: FC<DroppedItemsProps> = ({
   items
 }: DroppedItemsProps) => {
   const droppedElements = useSelector(getElements);
+  const currentMode = useSelector(getCurrentMode);
   const dispatch = useDispatch();
 
   const onDoubleClickHandler = (id: string) => {
@@ -33,7 +35,7 @@ export const DroppedItems: FC<DroppedItemsProps> = ({
           <Container
             id={element.id}
             key={element.id}
-            disabled={false}
+            disabled={currentMode === 'constructor' ? false : true}
             onDoubleClickHandler={onDoubleClickHandler}
           >
             {element.elem.map((e) => {

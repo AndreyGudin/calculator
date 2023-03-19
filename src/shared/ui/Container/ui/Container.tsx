@@ -3,6 +3,8 @@ import { useSortable } from '@dnd-kit/sortable';
 import { FC } from 'react';
 import { CSS } from '@dnd-kit/utilities';
 import { ElementStructure } from '../types';
+import { useSelector } from 'react-redux';
+import { getCurrentMode } from '../../../../entities/modeSwitcher';
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -36,12 +38,13 @@ export const Container: FC<ContainerProps> = (props: ContainerProps) => {
     data,
     disabled: typeof disabled === 'boolean' ? disabled : false
   });
-
+  const currentMode = useSelector(getCurrentMode);
   const additionalStyle = customStyle ? { ...customStyle } : '';
+  const isRuntime = currentMode === 'runtime' ? false : true;
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: disabled || isDragging ? 0.5 : 1,
+    opacity: (disabled || isDragging) && isRuntime ? 0.5 : 1,
     ...additionalStyle
   };
   const divStyle =
