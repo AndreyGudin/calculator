@@ -5,7 +5,7 @@ import { getDroppedIds } from '../../../app/providers/DndProvider/model/selector
 import { Block } from '../../../entities/block/ui';
 import { Display } from '../../../entities/display/ui';
 import { getCurrentMode } from '../../../entities/modeSwitcher';
-import { Button, ThemeButton } from '../../../shared/ui/Button/Button';
+import { Button, ThemeButton } from '../../../shared/ui/Button/ui/Button';
 import { Container } from '../../../shared/ui/Container/ui/Container';
 
 export const PanelWithElements: FC = () => {

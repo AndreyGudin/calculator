@@ -1,8 +1,6 @@
 import { PanelWithElements } from '../features/panelWithElements';
 import { PanelWithActions } from '../features/panelWithActions';
 import { StoreProvider } from './providers/StoreProvider';
-import { DndContext } from '@dnd-kit/core';
-import { closestCenter } from '@dnd-kit/core';
 import { DndProvider } from './providers/DndProvider/ui';
 
 function App() {

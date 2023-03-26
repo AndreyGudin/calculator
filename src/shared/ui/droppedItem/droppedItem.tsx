@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Display } from '../../../entities/display/ui';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/ui/Button';
 import { ElementsData } from '../Container/types';
 
 interface DroppedItemProps {

@@ -4,5 +4,5 @@ export enum Mode {
 }
 
 export interface ModeSchema {
-  mode: Mode;
+  currentMode: Mode;
 }
