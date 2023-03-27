@@ -23,9 +23,11 @@ export const DroppedItems: FC<DroppedItemsProps> = ({
   const onDoubleClickHandler = (id: string) => {
     const elements: ElementStructure[] = structuredClone(droppedElements);
     const indexToDelete = elements.findIndex((elem) => elem.id === id);
-    elements.splice(indexToDelete, 1);
-    dispatch(constructorActions.update(elements));
-    dispatch(constructorActions.dropped({ id, dropped: false }));
+    if (currentMode === 'constructor') {
+      elements.splice(indexToDelete, 1);
+      dispatch(constructorActions.update(elements));
+      dispatch(constructorActions.dropped({ id, dropped: false }));
+    }
   };
 
   return (

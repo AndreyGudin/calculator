@@ -1,12 +1,13 @@
 export enum Operation {
   PLUS = '+',
   MINUS = '-',
-  MULTIPLICATION = '*',
+  MULTIPLICATION = 'X',
   DIVISION = '/'
 }
 
 export interface CalculatorScheme {
-  value: string | null;
+  value1: string | null;
+  value2: string | null;
   result: string | null;
   operation: Operation | null;
 }
