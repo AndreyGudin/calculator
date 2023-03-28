@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CalculatorScheme } from '../types/calculatorScheme';
 
 const initialState: CalculatorScheme = {
@@ -21,7 +21,7 @@ export const calculatorSlice = createSlice({
     pressOperationButton: (state, payload) => {
       state.operation = payload.payload;
     },
-    printResult: (state, payload) => {
+    printResult: (state, payload: PayloadAction<string>) => {
       state.result = payload.payload;
     },
     clearValues: (state) => {

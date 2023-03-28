@@ -46,19 +46,31 @@ export const Button: FC<ButtonProps> = (props: ButtonProps) => {
           switch (currentOperation) {
             case '+':
               if (value1 && value2)
-                dispatch(calculatorActions.printResult(+value2 + +value1));
+                dispatch(
+                  calculatorActions.printResult((+value2 + +value1).toString())
+                );
+              dispatch(calculatorActions.clearValues());
               break;
             case 'X':
               if (value1 && value2)
-                dispatch(calculatorActions.printResult(+value2 * +value1));
+                dispatch(
+                  calculatorActions.printResult((+value2 * +value1).toString())
+                );
+              dispatch(calculatorActions.clearValues());
               break;
             case '/':
               if (value1 && value2)
-                dispatch(calculatorActions.printResult(+value2 / +value1));
+                dispatch(
+                  calculatorActions.printResult((+value2 / +value1).toString())
+                );
+              dispatch(calculatorActions.clearValues());
               break;
             case '-':
               if (value1 && value2)
-                dispatch(calculatorActions.printResult(+value2 - +value1));
+                dispatch(
+                  calculatorActions.printResult((+value2 - +value1).toString())
+                );
+              dispatch(calculatorActions.clearValues());
               break;
             default:
               break;
