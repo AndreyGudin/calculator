@@ -4,7 +4,7 @@ import { getCurrentMode } from '../../../../entities/modeSwitcher';
 import { getCurrentOperation } from '../model/selectors/getCurrentOperation/getCurrentOperation';
 import { getResult } from '../model/selectors/getResult/getResult';
 import { getValues } from '../model/selectors/getValue/getValue';
-import { calculatorActions } from '../model/silce/calculatorSlice';
+import { calculatorActions } from '../model/slice/calculatorSlice';
 
 export enum ThemeButton {
   NUMBER = 'w-[72px] h-[48px] border border-[#E2E3E5] block uppercase shadow bg-white hover:bg-slate-50 focus:shadow-outline focus:outline-none text-black text-xm rounded',
@@ -29,7 +29,8 @@ export const Button: FC<ButtonProps> = (props: ButtonProps) => {
   const handlerOnClick = () => {
     if (currentMode === 'runtime' && typeof children === 'string') {
       switch (className) {
-        case ThemeButton.NUMBER || ThemeButton.NUMBERx2:
+        case ThemeButton.NUMBER:
+        case ThemeButton.NUMBERx2:
           value1 = value1 === null ? '' : value1;
           value1 += children;
           console.log(value1);
