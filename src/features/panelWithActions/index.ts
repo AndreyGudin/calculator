@@ -1,1 +1,1 @@
-export { PanelWithActions } from './ui';
+export { PanelWithActions } from './ui/PanelWithActions';
