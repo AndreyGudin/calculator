@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Constructor } from '../../../entities/constructor/ui';
-import { ModeSwitcher } from '../../../entities/modeSwitcher/ui';
+import { Constructor } from '../../../entities/Constructor';
+import { ModeSwitcher } from '../../../entities/modeSwitcher';
 
 export const PanelWithActions: FC = () => {
   return (

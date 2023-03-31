@@ -1,14 +1,9 @@
-import {
-  closestCenter,
-  DndContext,
-  DragOverEvent,
-  DragStartEvent
-} from '@dnd-kit/core';
+import { DndContext } from '@dnd-kit/core';
 import { ReactNode } from 'react';
 import { DragEndEvent } from '@dnd-kit/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import { constructorActions } from '../model/slice/constructorSlice';
-import { ElementStructure } from '../../../../shared/ui/Container/types';
 
 interface DndProviderProps {
   children?: ReactNode;

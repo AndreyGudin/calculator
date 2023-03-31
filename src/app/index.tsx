@@ -1,7 +1,7 @@
 import { PanelWithElements } from '../features/panelWithElements';
 import { PanelWithActions } from '../features/panelWithActions';
 import { StoreProvider } from './providers/StoreProvider';
-import { DndProvider } from './providers/DndProvider/ui';
+import { DndProvider } from './providers/DndProvider';
 
 function App() {
   return (

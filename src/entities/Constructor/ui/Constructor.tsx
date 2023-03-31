@@ -16,10 +16,12 @@ import {
 } from '@dnd-kit/sortable';
 
 import svg_constructor from '../../../shared/assets/place.svg';
-import { getElementsIds } from '../../../app/providers/DndProvider/model/selectors/getElementsIds/getElementsIds';
-import { constructorActions } from '../../../app/providers/DndProvider/model/slice/constructorSlice';
-import { getElements } from '../../../app/providers/DndProvider/model/selectors/getElements/getElements';
-import { DroppedItems } from '../../droppedItems/ui/droppedItems';
+import {
+  constructorActions,
+  getElements,
+  getElementsIds
+} from '../../../app/providers/DndProvider';
+import { DroppedItems } from '../../DroppedItems';
 
 export const Constructor: FC = () => {
   const droppedElements = useSelector(getElements);

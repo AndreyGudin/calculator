@@ -1,9 +1,9 @@
-import { FC, DragEvent } from 'react';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
-import { Button, ThemeButton } from '../../../shared/ui/Button/ui/Button';
 
-import { Container } from '../../../shared/ui/Container/ui/Container';
+import { getDroppedIds } from '../../../app/providers/DndProvider';
+import { Button, ThemeButton } from '../../../shared/ui/Button';
+import { Container } from '../../../shared/ui/Container';
 
 interface BlockProps {
   array: string[];

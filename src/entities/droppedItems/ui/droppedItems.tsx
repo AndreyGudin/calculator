@@ -2,12 +2,13 @@ import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import { getElements } from '../../../app/providers/DndProvider/model/selectors/getElements/getElements';
-import { constructorActions } from '../../../app/providers/DndProvider/model/slice/constructorSlice';
-import { ElementStructure } from '../../../shared/ui/Container/types';
-import { Container } from '../../../shared/ui/Container/ui/Container';
-import { DroppedItem } from '../../../shared/ui/DroppedItem/droppedItem';
+import { DroppedItem } from '../../../shared/ui/DroppedItem/DroppedItem';
 import { getCurrentMode } from '../../modeSwitcher';
+import {
+  constructorActions,
+  getElements
+} from '../../../app/providers/DndProvider';
+import { Container, ElementStructure } from '../../../shared/ui/Container';
 
 interface DroppedItemsProps {
   items: ElementStructure[];

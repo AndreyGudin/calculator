@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { modeReducer } from '../../../../entities/modeSwitcher/model/slice';
-import { elementsReducer } from '../../../../features/panelWithElements/model/slice/elementsSlice';
-import { calculatorReducer } from '../../../../shared/ui/Button/model/slice/calculatorSlice';
-import { constructorReducer } from '../../DndProvider/model/slice/constructorSlice';
+
+import { modeReducer } from '../../../../entities/modeSwitcher';
+import { elementsReducer } from '../../../../features/PanelWithElements';
+import { calculatorReducer } from '../../../../shared/ui/Button';
+import { constructorReducer } from '../../DndProvider';
 import { StateSchema } from './StateSchema';
 
 export function createReduxStore(initialState?: StateSchema) {

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { getResult } from '../../../shared/ui/Button/model/selectors/getResult/getResult';
+
+import { getResult } from '../../../shared/ui/Button';
 import { getCurrentMode } from '../../modeSwitcher';
 
 interface DisplayProps {

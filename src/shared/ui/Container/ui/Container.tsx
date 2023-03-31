@@ -2,7 +2,7 @@ import { DragOverlay } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { FC } from 'react';
 import { CSS } from '@dnd-kit/utilities';
-import { ElementStructure } from '../types';
+import { ElementStructure } from '../types/elementsStructure';
 import { useSelector } from 'react-redux';
 import { getCurrentMode } from '../../../../entities/modeSwitcher';
 

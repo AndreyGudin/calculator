@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { getDroppedIds } from '../../../app/providers/DndProvider/model/selectors/getDroppedIds/getDroppedIds';
 
-import { Block } from '../../../entities/block/ui';
-import { Display } from '../../../entities/display/ui';
+import { Block } from '../../../entities/Block';
+import { Display } from '../../../entities/Display';
+import { getDroppedIds } from '../../../app/providers/DndProvider';
 import { getCurrentMode } from '../../../entities/modeSwitcher';
-import { Button, ThemeButton } from '../../../shared/ui/Button/ui/Button';
-import { Container } from '../../../shared/ui/Container/ui/Container';
+import { Container } from '../../../shared/ui/Container';
+import { Button, ThemeButton } from '../../../shared/ui/Button';
 
 export const PanelWithElements: FC = () => {
   const currentMode = useSelector(getCurrentMode);

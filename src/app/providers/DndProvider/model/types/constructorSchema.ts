@@ -1,4 +1,4 @@
-import { ElementStructure } from '../../../../../shared/ui/Container/types';
+import { ElementStructure } from '../../../../../shared/ui/Container/types/elementsStructure';
 
 export interface ConstructorSchema {
   value: ElementStructure[];

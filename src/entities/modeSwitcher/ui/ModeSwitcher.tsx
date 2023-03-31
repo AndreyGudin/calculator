@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import svg_runtime from '../../../shared/assets/eye.svg';
 import svg_selector from '../../../shared/assets/selector.svg';
-import { modeActions } from '../model/slice';
+import { modeActions } from '../model/slice/modeSlice';
 import { Mode } from '../model/types/modeSchema';
 
 export const ModeSwitcher: FC = () => {
