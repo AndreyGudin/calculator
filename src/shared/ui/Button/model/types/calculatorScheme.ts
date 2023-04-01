@@ -8,6 +8,6 @@ export enum Operation {
 export interface CalculatorScheme {
   value1: string | null;
   value2: string | null;
-  result: string | null;
+  result: string;
   operation: Operation | null;
 }

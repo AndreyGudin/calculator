@@ -38,7 +38,7 @@ export const Constructor: FC = () => {
     id: 'droppable1'
   });
   const style = {
-    backgroundColor: isOver ? 'green' : undefined
+    backgroundColor: isOver ? '#F0F9FF' : undefined
   };
 
   const dragEndHandler = (e: DragEndEvent) => {

@@ -3,7 +3,7 @@ import { CalculatorScheme } from '../types/calculatorScheme';
 
 const initialState: CalculatorScheme = {
   operation: null,
-  result: null,
+  result: '0',
   value1: null,
   value2: null
 };
@@ -22,7 +22,12 @@ export const calculatorSlice = createSlice({
       state.operation = payload.payload;
     },
     printResult: (state, payload: PayloadAction<string>) => {
-      state.result = payload.payload;
+      const result = payload.payload;
+      let textToDisplay = result.length > 10 ? (+result).toFixed(9) : result;
+      console.log(textToDisplay);
+      if (textToDisplay === 'NaN' || textToDisplay === 'Infinity')
+        textToDisplay = 'Не определенно';
+      state.result = textToDisplay;
     },
     clearValues: (state) => {
       state.value1 = null;

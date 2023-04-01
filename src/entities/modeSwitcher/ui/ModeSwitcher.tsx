@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import svg_runtime from '../../../shared/assets/eye.svg';
 import svg_selector from '../../../shared/assets/selector.svg';
+import { calculatorActions } from '../../../shared/ui/Button';
 import { modeActions } from '../model/slice/modeSlice';
 import { Mode } from '../model/types/modeSchema';
 
@@ -10,6 +11,8 @@ export const ModeSwitcher: FC = () => {
   const dispatch = useDispatch();
   const handleSwitch = (mode: Mode) => {
     dispatch(modeActions.switchMode(mode));
+    dispatch(calculatorActions.clearValues());
+    dispatch(calculatorActions.printResult('0'));
   };
 
   return (
